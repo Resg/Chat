@@ -1,4 +1,5 @@
 import BaseView from "../BaseView/BaseView";
+import {GenerateAnswer} from "../../module/GenerateAnswer/GenerateAnswer";
 
 
 export default class ChatView extends BaseView {
@@ -20,6 +21,9 @@ export default class ChatView extends BaseView {
     socket.onmessage = (msg) => {
       const data = JSON.parse(msg.data);
       textWindow.textContent += `${data.author}: ${data.body}\n`;
+      if (data.author === user.username) {
+        textWindow.textContent += `Support: ${GenerateAnswer(data.body)}\n`;
+      }
     };
     app.appendChild(textWindow);
     const inputContainer = document.createElement('form');
