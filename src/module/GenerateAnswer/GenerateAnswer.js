@@ -6,4 +6,5 @@ export const GenerateAnswer = (req) => {
     case /[Пп]ривет/.test(req):
       result+= 'Привет\n';
   }
+  return result;
 }
