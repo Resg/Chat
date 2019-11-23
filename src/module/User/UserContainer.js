@@ -18,6 +18,7 @@ export default class User {
           this.isAuth = true;
           this.username = JSON.parse(resText).username;
           this.avatar = JSON.parse(resText).image;
+          console.log(this.username);
         })
   }
 
