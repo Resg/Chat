@@ -9,10 +9,11 @@ window.router = new Router(document.getElementById('chat'));
 router.register('/', ChatView)
     .register('/admin', AdminView);
 user.checkAuth().then(() => {
-  router.start();
   if (user.admin){
+    router.start();
     router.open('/admin');
   }  else {
+    router.start();
     router.open('/');
   }
 });

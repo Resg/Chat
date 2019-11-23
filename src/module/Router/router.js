@@ -101,6 +101,6 @@ export default class Router {
 
     const currentPath = window.location.pathname;
 
-    this.open(currentPath);
+    // this.open(currentPath);
   }
 }
