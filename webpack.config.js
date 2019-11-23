@@ -10,7 +10,6 @@ const outPath = path.join(__dirname, '/dist');
 module.exports = {
   entry: {
     main: [
-      './src/module/pokerSolver/PokerSolver.js',
       './src/main.js',
       './src/main.scss',
     ],
@@ -46,11 +45,6 @@ module.exports = {
           {loader: 'url-loader?limit=10000'},
         ],
       },
-      {
-        test: /\.hbs/,
-        loader: 'handlebars-loader',
-        exclude: /(node_modules|bower_components)/,
-      },
     ],
   },
   devServer: {
@@ -64,15 +58,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src/index.html'),
-    }),
-
-    new CopyWebpackPlugin([
-        {from: path.join(__dirname, 'src/assets'), to: path.join(outPath, 'assets')},
-    ]),
-    new ServiceWorkerWebpackPlugin({
-      entry: path.join(__dirname, 'src/sw.js'),
-      // excludes: ['**/.*', '**/*.map', '*.html'],
-      
     }),
   ],
   node: {

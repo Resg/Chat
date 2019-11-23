@@ -1,25 +1,27 @@
-import Router from './module/router.js';
-import StartScreen from './components/viewes/StartScreen/StartScreen.js';
-import SignUpScreen from './components/viewes/SignUpScreen/SignUpScreen.js';
-import SignInScreen from './components/viewes/SignInScreen/SignInScreen.js';
-import ChangeProfileView from './components/viewes/Profile/Change/ChangeProfile.js';
-import NotFoundView from './components/viewes/NotFoundView/NotFoundView.js';
-import ProfileView from './components/viewes/Profile/Profile.js';
-import OfflineGameView from './components/viewes/OfflineGame/OfflineGameView.js';
-import runtime from 'serviceworker-webpack-plugin/lib/runtime.js';
 
-
-if ('serviceWorker' in navigator) {
-  const registration = runtime.register();
-}
-const application = document.getElementById('application');
-window.router = new Router(application);
-window.router.register('/', StartScreen)
-    .register('/signUp', SignUpScreen)
-    .register('/signIn', SignInScreen)
-    .register('/profileChange', ChangeProfileView)
-    .register('/profile', ProfileView)
-    .register('/offline', OfflineGameView)
-    .register('/notFound', NotFoundView);
-window.router.start();
-
+const socket = new WebSocket('ws://93.171.139.196:780/chatRoom/');
+const app = document.getElementById('chat');
+const textWindow = document.createElement('textarea');
+textWindow.className = 'chat__textWindow';
+textWindow.id = 'textWindow';
+socket.onmessage = (msg) => {
+  const data = JSON.parse(msg.data);
+  textWindow.textContent += `${data.author}: ${data.body}\n`;
+};
+app.appendChild(textWindow);
+const inputContainer = document.createElement('div');
+inputContainer.className = 'chat__inputContainer';
+const input = document.createElement('input');
+input.className = 'chat__inputContainer__input';
+const submitButton = document.createElement('button');
+submitButton.className = 'chat__inputContainer__button';
+submitButton.textContent = 'Отправить';
+submitButton.type = 'submit';
+inputContainer.appendChild(input);
+inputContainer.appendChild(submitButton);
+submitButton.addEventListener('click', (event) => {
+  event.preventDefault();
+  socket.send(input.value);
+  input.value = '';
+});
+app.appendChild(inputContainer);

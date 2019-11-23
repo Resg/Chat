@@ -1,37 +1,45 @@
-@import 'components/Button/Button.scss';
-@import 'components/Header/Header.scss';
-@import 'components/TextComponent/Text.scss';
-@import 'components/Image/Image.scss';
-@import 'components/Input/Input.scss';
-@import 'components/viewes/Profile/Change/ChangeProfile.scss';
-@import 'components/InfoBar/infoBar.scss';
-@import 'components/viewes/OfflineGame/OfflineGameView.scss';
-@import 'components/PokerUserPanel/PokerUserPanel.scss';
-@import 'components/BankPanel/BankPanel.scss';
-@import 'components/ButtonPanel/ButtonPanel.scss';
-@import 'components/BotPanel/BotPanel.scss';
-@import "base.scss";
-@import 'components/MenuBar/MenuBar.scss';
-@import "components/PlayerInfo/PlayerInfo.scss";
-@import "components/Card/Card.scss";
-@import "components/BancersCard/BancersCard.scss";
 
 
-@media screen and (orientation:landscape) and (max-device-width: 900px) {
-  html{
-    -webkit-transform: rotate(-90deg);
-    -moz-transform: rotate(-90deg);
-    -ms-transform: rotate(-90deg);
-    -o-transform: rotate(-90deg);
-    transform: rotate(-90deg);
-    -webkit-transform-origin: left top;
-    -moz-transform-origin: left top;
-    -ms-transform-origin: left top;
-    -o-transform-origin: left top;
-    transform-origin: left top;
-    width: 320px; /*Разрешение экрана iPhone*/
-    position: absolute;
-    top: 100%;
-    left: 0
+.chat {
+  display: flex;
+  flex-direction: column;
+  background: darkslategray;
+  width: 400px;
+  padding: 5px;
+  border-radius: 5px;
+  &__textWindow {
+    height: 600px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  &__inputContainer {
+    padding-left: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    background: white;
+    &__input {
+      border-radius: 5px;
+      /*height: 100px;*/
+      border: none;
+      width: 90%;
+    }
+
+    &__input:focus {
+      outline: none;
+    }
+
+    &__button {
+      border-radius: 5px;
+      width: 10%;
+      border: none;
+      height: 40px;
+      width: 100px;
+      z-index: 5;
+      background: none;
+    }
   }
 }
+
+
+

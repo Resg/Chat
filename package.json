@@ -1,5 +1,5 @@
 {
-  "name": "Poker",
+  "name": "chat",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -59,12 +59,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/frontend-park-mail-ru/2019_2_TODO.git"
+    "url": "git+https://github.com/.git"
   },
   "author": "TODO",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/frontend-park-mail-ru/2019_2_TODO/issues"
+    "url": "https://github.com/issues"
   },
-  "homepage": "https://github.com/frontend-park-mail-ru/2019_2_TODO#readme"
+  "homepage": "https://github.com/#readme"
 }
