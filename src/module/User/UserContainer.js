@@ -21,7 +21,7 @@ export default class User {
             this.avatar = JSON.parse(resText).image;
             console.log(this.username);
           }
-        })
+        });
   }
 
   auth(username, password) {
