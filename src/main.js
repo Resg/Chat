@@ -27,8 +27,7 @@ inputContainer.appendChild(input);
 inputContainer.appendChild(submitButton);
 submitButton.addEventListener('click', (event) => {
   event.preventDefault();
-  const msg = JSON.stringify(`{${user.username}: ${input.value}}`)
-  socket.send(msg);
+  socket.send(input.value);
   input.value = '';
 });
 app.appendChild(inputContainer);
