@@ -24,7 +24,7 @@ export default class ChatView extends BaseView {
       if (data.author === user.username && !user.admin) {
         const answer = GenerateAnswer(data.body);
         if (answer !== ''){
-          textWindow.textContent += `Support: ${answer}\n`;
+          textWindow.textContent += `Support: ${answer}`;
         }
       }
     };
