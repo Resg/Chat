@@ -49,6 +49,9 @@ body{
 
 
 .room{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: white;
   min-width: 80%;
   height: 40px;
