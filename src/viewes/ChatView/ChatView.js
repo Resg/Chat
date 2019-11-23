@@ -21,7 +21,7 @@ export default class ChatView extends BaseView {
     socket.onmessage = (msg) => {
       const data = JSON.parse(msg.data);
       textWindow.textContent += `${data.author}: ${data.body}\n`;
-      if (data.author === user.username) {
+      if (data.author === user.username && !user.admin) {
         const answer = GenerateAnswer(data.body);
         if (answer !== ''){
           textWindow.textContent += `Support: ${answer}\n`;
