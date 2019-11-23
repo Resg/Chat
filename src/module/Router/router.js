@@ -27,7 +27,7 @@ export default class Router {
     const route = this.routes[path];
 
     if (!route) {
-      this.open('/notFound');
+      this.open('/');
       return;
     }
 

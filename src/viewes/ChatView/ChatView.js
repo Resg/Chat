@@ -1,0 +1,37 @@
+import BaseView from "../BaseView/BaseView";
+
+
+export default class ChatView extends BaseView {
+  constructor(element) {
+    super(element);
+  }
+
+  render() {
+    const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}`);
+    const app = this.el;
+    const textWindow = document.createElement('textarea');
+    textWindow.className = 'chat__textWindow';
+    textWindow.id = 'textWindow';
+    socket.onmessage = (msg) => {
+      const data = JSON.parse(msg.data);
+      textWindow.textContent += `${data.author}: ${data.body}\n`;
+    };
+    app.appendChild(textWindow);
+    const inputContainer = document.createElement('form');
+    inputContainer.className = 'chat__inputContainer';
+    const input = document.createElement('input');
+    input.className = 'chat__inputContainer__input';
+    const submitButton = document.createElement('button');
+    submitButton.className = 'chat__inputContainer__button';
+    submitButton.textContent = 'Отправить';
+    submitButton.type = 'submit';
+    inputContainer.appendChild(input);
+    inputContainer.appendChild(submitButton);
+    inputContainer.addEventListener('submit', (event) => {
+      event.preventDefault();
+      socket.send(input.value);
+      input.value = '';
+      app.appendChild(inputContainer);
+    });
+  }
+}

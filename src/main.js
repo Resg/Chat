@@ -1,33 +1,20 @@
 import User from "./module/User/UserContainer";
+import Router from "./module/Router/router";
+import ChatView from "./viewes/ChatView/ChatView";
+import AdminView from "./viewes/AdminView/AdminView";
 
 
 window.user = new User();
-user.checkAuth().then(()=>{
-  const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}`);
-  const app = document.getElementById('chat');
-  const textWindow = document.createElement('textarea');
-  textWindow.className = 'chat__textWindow';
-  textWindow.id = 'textWindow';
-  socket.onmessage = (msg) => {
-    const data = JSON.parse(msg.data);
-    textWindow.textContent += `${data.author}: ${data.body}\n`;
-  };
-  app.appendChild(textWindow);
-  const inputContainer = document.createElement('form');
-  inputContainer.className = 'chat__inputContainer';
-  const input = document.createElement('input');
-  input.className = 'chat__inputContainer__input';
-  const submitButton = document.createElement('button');
-  submitButton.className = 'chat__inputContainer__button';
-  submitButton.textContent = 'Отправить';
-  submitButton.type = 'submit';
-  inputContainer.appendChild(input);
-  inputContainer.appendChild(submitButton);
-  inputContainer.addEventListener('submit', (event) => {
-    event.preventDefault();
-    socket.send(input.value);
-    input.value = '';
-  });
-  app.appendChild(inputContainer);
+window.router = new Router(document.getElementById('chat'));
+router.register('/', ChatView)
+    .register('/admin', AdminView);
+user.checkAuth().then(() => {
+  router.start();
+  if (user.admin){
+    router.open('/admin');
+  }  else {
+    router.open('/');
+  }
 });
+
 

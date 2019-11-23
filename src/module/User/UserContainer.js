@@ -5,6 +5,7 @@ export default class User {
     this.isAuth = false;
     this.username = 'unAuthorized';
     this.avatar = 'https://jok.io/Images/Shared/unknown_female.png';
+    this.admin = false;
   }
 
   checkAuth() {
@@ -19,6 +20,7 @@ export default class User {
             this.isAuth = true;
             this.username = JSON.parse(resText).username;
             this.avatar = JSON.parse(resText).image;
+            this.admin = JSON.parse(resText).admin;
             console.log(this.username);
           }
         });
