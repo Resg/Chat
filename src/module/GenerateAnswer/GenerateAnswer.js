@@ -15,7 +15,7 @@ export const GenerateAnswer = (req) => {
   if (/интернет/.test(req.toLowerCase())){
     result+= 'Игра без интернета: http://93.171.139.195:780/offline\n';
   }
-  if (/изменить/.test(req.toLowerCase())){
+  if (/(изменить)|(поменять)/.test(req.toLowerCase())){
     result+= 'Настройка профиля доступна после авторизации по ссылке:\n http://93.171.139.195:780/profileChange\n'
   }
   return result;
