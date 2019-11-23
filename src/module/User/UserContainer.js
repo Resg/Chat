@@ -15,10 +15,12 @@ export default class User {
           return res.text();
         })
         .then((resText) => {
-          this.isAuth = true;
-          this.username = JSON.parse(resText).username;
-          this.avatar = JSON.parse(resText).image;
-          console.log(this.username);
+          if (resText){
+            this.isAuth = true;
+            this.username = JSON.parse(resText).username;
+            this.avatar = JSON.parse(resText).image;
+            console.log(this.username);
+          }
         })
   }
 
