@@ -23,7 +23,7 @@ user.checkAuth().then(()=>{
   submitButton.type = 'submit';
   inputContainer.appendChild(input);
   inputContainer.appendChild(submitButton);
-  submitButton.addEventListener('submit', (event) => {
+  inputContainer.addEventListener('submit', (event) => {
     event.preventDefault();
     socket.send(input.value);
     input.value = '';
