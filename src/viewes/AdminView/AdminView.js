@@ -7,7 +7,11 @@ export default class AdminView extends BaseView {
   }
 
   render(arg = null) {
-    AjaxModule.getRooms().then((rooms)=>{
+    AjaxModule.getRooms().then((res)=>{
+      return res.text();
+    }).then((resText)=>{
+      return JSON.parse(resText);
+    }).then((rooms)=>{
       const divak = document.createElement('div');
       divak.className = 'column';
       rooms.forEach((room) => {
@@ -18,7 +22,7 @@ export default class AdminView extends BaseView {
         listItem.addEventListener('click', (event) => {
           event.preventDefault();
           const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}&room=${room}`);
-
+          router.open('/', socket);
         });
       });
       this.el.appendChild(divak);
