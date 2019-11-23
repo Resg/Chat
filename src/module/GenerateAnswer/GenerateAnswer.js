@@ -3,7 +3,7 @@
 export const GenerateAnswer = (req) => {
   let result = '';
   switch (req) {
-    case req.Match(/[Пп]ривет/):
+    case /[Пп]ривет/.test(req):
       result+= 'Привет\n';
   }
 }
