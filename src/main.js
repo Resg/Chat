@@ -13,7 +13,7 @@ user.checkAuth().then(()=>{
     textWindow.textContent += `${data.author}: ${data.body}\n`;
   };
   app.appendChild(textWindow);
-  const inputContainer = document.createElement('div');
+  const inputContainer = document.createElement('form');
   inputContainer.className = 'chat__inputContainer';
   const input = document.createElement('input');
   input.className = 'chat__inputContainer__input';
@@ -23,7 +23,7 @@ user.checkAuth().then(()=>{
   submitButton.type = 'submit';
   inputContainer.appendChild(input);
   inputContainer.appendChild(submitButton);
-  submitButton.addEventListener('click', (event) => {
+  submitButton.addEventListener('submit', (event) => {
     event.preventDefault();
     socket.send(input.value);
     input.value = '';
