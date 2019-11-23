@@ -31,7 +31,7 @@ export default class ChatView extends BaseView {
       event.preventDefault();
       socket.send(input.value);
       input.value = '';
-      app.appendChild(inputContainer);
     });
+    app.appendChild(inputContainer);
   }
 }
