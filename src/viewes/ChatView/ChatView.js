@@ -22,7 +22,10 @@ export default class ChatView extends BaseView {
       const data = JSON.parse(msg.data);
       textWindow.textContent += `${data.author}: ${data.body}\n`;
       if (data.author === user.username) {
-        textWindow.textContent += `Support: ${GenerateAnswer(data.body)}\n`;
+        const answer = GenerateAnswer(data.body);
+        if (answer !== ''){
+          textWindow.textContent += `Support: ${answer}\n`;
+        }
       }
     };
     app.appendChild(textWindow);
