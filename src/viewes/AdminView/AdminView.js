@@ -13,6 +13,9 @@ export default class AdminView extends BaseView {
       return JSON.parse(resText).rooms;
     }).then((rooms)=>{
       console.log(rooms);
+      const header = document.createElement('header');
+      header.textContent = 'Admin';
+      this.el.appendChild(header)
       const divak = document.createElement('div');
       divak.className = 'column';
       rooms.forEach((room) => {
