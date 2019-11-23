@@ -5,7 +5,7 @@ window.user = new User();
 user.checkAuth();
 
 
-const socket = new WebSocket('ws://93.171.139.196:781/chatRoom/');
+const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}`);
 const app = document.getElementById('chat');
 const textWindow = document.createElement('textarea');
 textWindow.className = 'chat__textWindow';
