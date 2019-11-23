@@ -1,3 +1,9 @@
+import User from "./module/User/UserContainer";
+
+
+window.user = new User();
+user.checkAuth();
+
 
 const socket = new WebSocket('ws://93.171.139.196:781/chatRoom/');
 const app = document.getElementById('chat');
@@ -21,7 +27,8 @@ inputContainer.appendChild(input);
 inputContainer.appendChild(submitButton);
 submitButton.addEventListener('click', (event) => {
   event.preventDefault();
-  socket.send(input.value);
+  const msg = JSON.stringify({user.username: input.value})
+  socket.send(msg);
   input.value = '';
 });
 app.appendChild(inputContainer);
