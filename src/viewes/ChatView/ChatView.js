@@ -6,8 +6,13 @@ export default class ChatView extends BaseView {
     super(element);
   }
 
-  render() {
-    const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}`);
+  render(arg = null) {
+    let socket;
+    if (arg) {
+      socket = arg;
+    } else {
+      socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}`);
+    }
     const app = this.el;
     const textWindow = document.createElement('textarea');
     textWindow.className = 'chat__textWindow';

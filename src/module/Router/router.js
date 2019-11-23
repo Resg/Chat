@@ -23,11 +23,11 @@ export default class Router {
   /**
      * @param {string} path
      */
-  open(path) {
+  open(path, arg = null) {
     const route = this.routes[path];
 
     if (!route) {
-      this.open('/');
+      this.open('/', arg);
       return;
     }
 
@@ -57,7 +57,7 @@ export default class Router {
         }
       });
 
-      view.show();
+      view.show(arg);
     }
 
     this.routes[path] = {View, view, el};

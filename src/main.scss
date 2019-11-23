@@ -48,3 +48,15 @@ body{
 
 
 
+.room{
+  background: white;
+  min-width: 80%;
+  height: 40px;
+  color: black;
+
+}
+
+.column{
+  display: flex;
+  flex-direction: column;
+}

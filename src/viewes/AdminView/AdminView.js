@@ -1,11 +1,27 @@
 import BaseView from "../BaseView/BaseView";
+import AjaxModule from '../../module/AjaxModule/ajax'
 
-
-export default class AdminView  extends BaseView{
-  constructor(element){
+export default class AdminView extends BaseView {
+  constructor(element) {
     super(element)
   }
-  render() {
 
+  render(arg = null) {
+    AjaxModule.getRooms().then((rooms)=>{
+      const divak = document.createElement('div');
+      divak.className = 'column';
+      rooms.forEach((room) => {
+        const listItem = document.createElement('div');
+        listItem.className = 'room';
+        listItem.textContent = `${room}`;
+        divak.appendChild(listItem);
+        listItem.addEventListener('click', (event) => {
+          event.preventDefault();
+          const socket = new WebSocket(`ws://93.171.139.196:781/chatRoom/?name=${user.username}&room=${room}`);
+
+        });
+      });
+      this.el.appendChild(divak);
+    });
   }
 }

@@ -62,6 +62,14 @@ class AjaxModule {
     });
   }
 
+  getRooms(){
+    return  this.fetchGet('http://93.171.139.196:780/getRooms/')
+        .then(res=> res.text())
+        .then(resText =>{
+          return JSON.parse(resText).rooms;
+        });
+  }
+
   /**
    * Выход
    * @param {HTMLElement} application - элемент для возврата

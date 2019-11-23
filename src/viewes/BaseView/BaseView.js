@@ -19,12 +19,12 @@ export default class BaseView {
     this.el.hidden = true;
   }
 
-  show() {
+  show(arg = null) {
     this.el.hidden = false;
-    this.render();
+    this.render(arg);
   }
 
-  render() {
+  render(arg = null) {
 
   }
 }
