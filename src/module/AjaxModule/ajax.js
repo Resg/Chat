@@ -63,7 +63,7 @@ class AjaxModule {
   }
 
   getRooms(){
-    return  this.fetchGet('http://93.171.139.196:780/getRooms/')
+    return  this.fetchGet('http://93.171.139.196:781/getRooms/')
         .then(res=> res.text())
         .then(resText =>{
           return JSON.parse(resText).rooms;
@@ -75,7 +75,7 @@ class AjaxModule {
    * @param {HTMLElement} application - элемент для возврата
    */
   logOut(application) {
-    this.fetchGet('http://93.171.139.196:781/logout/')
+    this.fetchGet('http://93.171.139.196:780/logout/')
         .then((res) => {
           if (res.status === 200) {
             window.router.reRender('/');
