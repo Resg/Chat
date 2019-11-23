@@ -10,8 +10,9 @@ export default class AdminView extends BaseView {
     AjaxModule.getRooms().then((res)=>{
       return res.text();
     }).then((resText)=>{
-      return JSON.parse(resText);
+      return JSON.parse(resText).rooms;
     }).then((rooms)=>{
+      console.log(rooms);
       const divak = document.createElement('div');
       divak.className = 'column';
       rooms.forEach((room) => {
