@@ -54,7 +54,7 @@
     "lint": "eslint",
     "webpack": "webpack --config webpack.config.js --mode=development",
     "start:dev": "webpack-dev-server",
-    "build": "NODE_ENV=production babel src --out-dir dist",
+    "build": "webpack --config webpack.prod.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {
